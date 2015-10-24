@@ -1,0 +1,15 @@
+"*":
+  "exception-reporting":
+    userId: "aa15f597-ffac-2778-0be7-521e802aa4a3"
+  welcome:
+    showOnStartup: false
+  core:
+    "customFileTypes":
+        "source.json": [
+            "template"
+        ]
+  editor:
+    invisibles: {}
+    tabLength: 4
+    fontSize: 12
+    fontFamily: "Menlo"
