@@ -1,7 +1,8 @@
 " Use the Solarized Dark theme
+let g:solarized_termcolors=256
+colorscheme solarized
 set background=dark
-colorscheme default
-let g:solarized_termtrans=1
+"let g:solarized_termtrans=1
 
 " Make Vim more useful
 set nocompatible
