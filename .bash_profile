@@ -47,9 +47,6 @@ if [ -f /usr/local/bin/aws_completer ] && which aws 2>&1 >/dev/null; then
 	complete -C '/usr/local/bin/aws_completer' aws
 fi
 
-# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
-
 # OS X Specifics
 if [ $(uname -s) = "Darwin" ]; then
 	# Add tab completion for `defaults read|write NSGlobalDomain`
@@ -59,4 +56,3 @@ if [ $(uname -s) = "Darwin" ]; then
 	# Add `killall` tab completion for common apps
 	complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 fi
-
