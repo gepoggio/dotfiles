@@ -63,3 +63,8 @@ if ! [ $(uname -s) = "Darwin" ]; then
 	    ssh-add
 	fi
 fi
+
+if [ -f "$(which pyenv)" ] && [ -d "$HOME/.pyenv" ]; then
+	export PATH="$HOME/.pyenv:$PATH"
+	eval "$(pyenv init -)"
+fi
