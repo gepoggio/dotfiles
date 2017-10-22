@@ -3,20 +3,6 @@ function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
 
-# Determine size of a file or total size of a directory
-function fs() {
-	if du -b /dev/null > /dev/null 2>&1; then
-		local arg=-sbh;
-	else
-		local arg=-sh;
-	fi
-	if [[ -n "$@" ]]; then
-		du $arg -- "$@";
-	else
-		du $arg .[^.]* *;
-	fi;
-}
-
 # Use Git’s colored diff when available
 hash git &>/dev/null;
 if [ $? -eq 0 ]; then
@@ -24,23 +10,3 @@ if [ $? -eq 0 ]; then
 		git diff --no-index --color-words "$@";
 	}
 fi;
-
-# Syntax-highlight JSON strings or files
-# Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
-function json() {
-	if [ -t 0 ]; then # argument
-		python -mjson.tool <<< "$*" | pygmentize -l javascript;
-	else # pipe
-		python -mjson.tool | pygmentize -l javascript;
-	fi;
-}
-
-# `a` with no arguments opens the current directory in Atom Editor, otherwise
-# opens the given location
-function a() {
-	if [ $# -eq 0 ]; then
-		atom .;
-	else
-		atom "$@";
-	fi;
-}

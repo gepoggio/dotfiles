@@ -58,9 +58,17 @@ if [ $(uname -s) = "Darwin" ]; then
 fi
 
 if ! [ $(uname -s) = "Darwin" ]; then
-	if [ -z "$SSH_AUTH_SOCK" ] ; then
-	    eval `ssh-agent -s`
-	    ssh-add
+	# ssh-agent configuration
+	if [ -z "$(pgrep ssh-agent)" ]; then
+		rm -rf /tmp/ssh-*
+		eval $(ssh-agent -s) > /dev/null
+	else
+		export SSH_AGENT_PID=$(pgrep ssh-agent)
+		export SSH_AUTH_SOCK=$(find /tmp/ssh-* -name agent.*)
+	fi
+
+	if [ "$(ssh-add -l)" == "The agent has no identities." ]; then
+		ssh-add
 	fi
 fi
 

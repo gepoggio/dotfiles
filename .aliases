@@ -11,7 +11,7 @@ alias -- -="cd -"
 alias dr="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/Projects"
+alias pj="cd ~/Projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
@@ -46,7 +46,7 @@ alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias digga="dig +noall +nocmd +multiline +answer"
 
 # remove comments and empty lines
-alias nocomments="egrep -v '^[[:space:]]*$|^ *#'"
+alias nocomms="egrep -v '^[[:space:]]*$|^[[:space:]]*#'"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
